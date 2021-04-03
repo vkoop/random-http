@@ -1,0 +1,20 @@
+plugins {
+    id 'org.springframework.boot' version '2.4.1'
+    id 'io.spring.dependency-management' version '1.0.10.RELEASE'
+    id 'java'
+    id 'com.google.cloud.tools.jib' version '2.8.0'
+}
+
+group = 'de.vkoop'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+jib.to.image = 'vkoop/mockserver'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-webflux'
+}
