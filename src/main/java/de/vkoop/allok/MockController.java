@@ -25,8 +25,16 @@ public class MockController {
     public Mono<String> answerAll() {
         final long delay = getDelay();
         return Mono.delay(Duration.ofMillis(delay))
-                .map(x ->
-                        "<html><head></head><body>ok</body></html>");
+                .map(x -> "<html><head></head><body>ok</body></html>");
+    }
+
+    @ResponseBody
+    @RequestMapping(value="/**", produces = "application/json")
+    public Mono<String> answerJson(){
+        final long delay = getDelay();
+
+        return Mono.delay(Duration.ofMillis(delay))
+                .map(x -> "{}");
     }
 
     private long getDelay() {
